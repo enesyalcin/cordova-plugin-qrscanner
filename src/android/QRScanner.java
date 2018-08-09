@@ -486,6 +486,12 @@ public class QRScanner extends CordovaPlugin implements BarcodeCallback {
         }
 
         if(barcodeResult.getText() != null) {
+            
+            if(barcodeResult.getText().contains("http"))
+            {
+                return;
+            }
+            
             scanning = false;
             this.nextScanCallback.success(barcodeResult.getText());
             this.nextScanCallback = null;
